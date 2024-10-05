@@ -14,7 +14,6 @@ import processPieData from './helper/processPieData';
 
 import handleBtnClick from './helper/handleBtnClick';
 
-
 const PieChart = ({ subheader, chartColors, startDate, endDate, ...other }) => {
   const theme = useTheme();
   // 전체 또는 소 또는 돼지 중 조회할 데이터의 label
@@ -72,7 +71,12 @@ const PieChart = ({ subheader, chartColors, startDate, endDate, ...other }) => {
       <CardHeader
         title={TITLE}
         titleTypographyProps={{ variant: 'h6' }}
-        style={{ paddingBottom: '0px' }}
+        style={{
+          color: '#002984',
+          fontSize: '18px',
+          fontWeight: '800',
+          paddingBottom: '0px',
+        }}
       ></CardHeader>
       <Box sx={style.cardWrapper}>
         <ButtonGroup variant="outlined" aria-label="outlined button group">
@@ -129,8 +133,8 @@ export default PieChart;
 
 const CHART_HEIGHT = 300;
 const LEGEND_HEIGHT = 50;
-const TITLE = '신선육/숙성육';
-const CHART_LABLE = ['신선육', '숙성육'];
+const TITLE = '원육/처리육';
+const CHART_LABLE = ['원육', '처리육'];
 
 const StyledChartWrapper = styled('div')(({ theme }) => ({
   height: CHART_HEIGHT,
@@ -149,6 +153,12 @@ const StyledChartWrapper = styled('div')(({ theme }) => ({
 }));
 
 const style = {
+  Title: {
+    color: '#002984',
+    height: '40px',
+    fontSize: '18px',
+    fontWeight: '800',
+  },
   cardWrapper: {
     display: 'flex',
     width: '100%',

@@ -59,6 +59,17 @@ const MeatImgsCard = ({
       setCurrIdx(Math.max(0, imgArr.length - 1));
     }
   }, [imgArr.length, currentIdx]);
+  // 육류 회차 정보 추출
+  const meatSeq = processed_data_seq
+    ? processed_data_seq.map((item) => {
+        if (item === '원육') {
+          return 0; // 원육은 0으로 변환
+        } else {
+          const numberMatch = item.match(/\d+/);
+          return numberMatch ? parseInt(numberMatch[0], 10) : null; // 숫자 추출
+        }
+      })
+    : [0]; // 회차 정보가 없는 경우 원육만 표시
 
   // 1) 이미지 페이지네이션 '>' 버튼 클릭
   const handleNextClick = () => {
@@ -89,10 +100,12 @@ const MeatImgsCard = ({
     newImages[currentIdx] = reader.result;
     setImgArr(newImages);
   };
-
   // 툴팁 이미지 데이터
   const [tooltipImgData, setTooltipImgData] = useState([]);
-  const { data, isLoading, isError } = useOpencvImageData(id, currentIdx);
+  const { data, isLoading, isError } = useOpencvImageData(
+    id,
+    meatSeq[currentIdx]
+  );
 
   const handleFileChange = (e) => {
     handleImgChange({
@@ -155,6 +168,7 @@ const MeatImgsCard = ({
               </div>
             )
           }
+
           <div style={{ display: 'flex' }}>
             {
               /**

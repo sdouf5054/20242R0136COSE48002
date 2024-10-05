@@ -54,25 +54,37 @@ const OpencvImgMaker = ({ data }) => {
       <div style={{ flex: 1 }}>
         <div style={{ marginBottom: '20px' }}>
           <div style={style.imgTitleWrapper}>단백질 컬러팔레트</div>
-          <ColorPaletteMaker
-            colors={data.proteinColorPalette.map((color) => [color])}
-          />
+          {data.proteinColorPalette ? (
+            <ColorPaletteMaker
+              colors={data.proteinColorPalette.map((color) => [color])}
+            />
+          ) : (
+            <div>No Protein Color Palette Available</div>
+          )}
         </div>
 
         <div style={{ marginBottom: '20px' }}>
           <div style={style.imgTitleWrapper}>지방 컬러팔레트</div>
-          <ColorPaletteMaker
-            colors={data.fatColorPalette.map((color) => [color])}
-          />
+          {data.fatColorPalette ? (
+            <ColorPaletteMaker
+              colors={data.fatColorPalette.map((color) => [color])}
+            />
+          ) : (
+            <div>No Fat Color Palette Available</div>
+          )}
         </div>
 
         <div>
           <div style={style.imgTitleWrapper}>전체 컬러팔레트 (%)</div>
           {/* Use ColorPalette and pass the color and percentage */}
-          <ColorPaletteMaker
-            colors={data.totalColorPalette}
-            showPercentage={true}
-          />
+          {data.totalColorPalette ? (
+            <ColorPaletteMaker
+              colors={data.totalColorPalette}
+              showPercentage={true}
+            />
+          ) : (
+            <div>No Total Color Palette Available</div>
+          )}
         </div>
       </div>
     </div>

@@ -75,9 +75,10 @@ const handleImgChange = async ({
             updatePreviews(reader);
             setIsImgChanged(true);
             // OpenCV 데이터가 없으면 POST로, 있으면 PATCH로 처리
-            if (!data || data.msg) {
+            if (!data.segmentImage) {
               isPost = true;
             }
+            // console.log('isPost:', isPost);
             // 처리육은 isPost 값에 따라 생성/수정 구분하여 OpenCV 데이터 처리
             predictOpencvImageData(id, existSeq[i], isPost);
           })
