@@ -6,9 +6,11 @@ import Spinner from 'react-bootstrap/Spinner';
 import QRInfoCard from './CardComps/QRInfoCard';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import CustomSnackbar from '../Base/CustomSnackbar';
+
 //mui
 import './imgRot.css';
-import { TextField, Autocomplete, tableCellClasses } from '@mui/material';
+import { TextField, Autocomplete } from '@mui/material';
 // import tables
 import RawTable from './TablesComps/RawTable';
 import PredictedRawTable from './TablesComps/PredictedRawTable';
@@ -88,6 +90,21 @@ const DataPAView = ({ dataProps }) => {
   //예측 post 중 로딩 표시
   const [isPredictedDone, SetIsPredictedDone] = useState(true);
 
+  // 스낵바
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
+
+  const handleSnackbarShow = (message, severity) => {
+    setSnackbarMessage(message);
+    setSnackbarSeverity(severity);
+    setSnackbarOpen(true);
+  };
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
+
   // UserContext에서 유저 정보 불러오기
   const user = useUser();
 
@@ -111,12 +128,17 @@ const DataPAView = ({ dataProps }) => {
       // 예측된 데이터가 있는지 확인하고 상태 업데이트
       if (predictedData) {
         setDataPA(predictedData);
+        handleSnackbarShow('데이터 예측에 성공하였습니다.', 'success');
+      } else {
+        handleSnackbarShow('데이터 예측에 실패하였습니다.', 'error');
       }
 
       // 로딩 화면 표시 종료(완료)
       SetIsPredictedDone(true);
     } catch (error) {
       console.error('Error during prediction:', error);
+      handleSnackbarShow('오류로 인해 데이터 예측에 실패하였습니다.', 'error');
+    } finally {
       // 로딩 화면 표시 종료
       SetIsPredictedDone(true);
     }
@@ -338,6 +360,12 @@ const DataPAView = ({ dataProps }) => {
           </Tabs>
         </Card>
       </div>
+      <CustomSnackbar
+        open={snackbarOpen}
+        message={snackbarMessage}
+        severity={snackbarSeverity}
+        onClose={handleSnackbarClose}
+      />
     </div>
   );
 };
