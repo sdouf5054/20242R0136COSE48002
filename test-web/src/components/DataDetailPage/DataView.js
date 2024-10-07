@@ -502,6 +502,7 @@ const DataView = ({ dataProps }) => {
             processed_data_seq={processed_data_seq}
             meatId={meatId}
             userId={userId}
+            butcheryYmd={api_data.butcheryYmd}
           />
         </Modal.Body>
       </Modal>
