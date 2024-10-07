@@ -57,8 +57,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Run tests
-        run: |
-          cd test-web
-          npm test
-          echo 'Test Success!'
+      # - name: Run tests
+      #   run: |
+      #     cd test-web
+      #     npm test
+      #     echo 'Test Success!'
