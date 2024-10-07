@@ -152,168 +152,204 @@ const DataView = ({ dataProps }) => {
     //로그인한 유저 정보
     const currentUserId = user.userId;
 
-    // 1. 가열육 관능검사 데이터 생성/수정 API POST/PATCH
-    let dict = {};
-    for (let i = 0; i < len; i++) {
-      const isMethodPost = await isPost(
-        [
-          heated_data[i]?.flavor,
-          heated_data[i]?.juiciness,
-          heated_data[i]?.palatability,
-          heated_data[i]?.umami,
-          heated_data[i]?.tenderness0,
-          heated_data[i]?.tenderness3,
-          heated_data[i]?.tenderness7,
-          heated_data[i]?.tenderness14,
-          heated_data[i]?.tenderness21,
-        ],
-        [
-          heatInput[i]?.flavor,
-          heatInput[i]?.juiciness,
-          heatInput[i]?.palatability,
-          heatInput[i]?.umami,
-          heatInput[i]?.tenderness0,
-          heatInput[i]?.tenderness3,
-          heatInput[i]?.tenderness7,
-          heatInput[i]?.tenderness14,
-          heatInput[i]?.tenderness21,
-        ],
-        isHeatedPosted[i]
-      );
-      if (isMethodPost === undefined) continue;
-      else if (isMethodPost) dict = { ...dict, [i]: isMethodPost };
+    try {
+      // Store all promises in arrays
+      const heatedPromises = [];
+      const labPromises = [];
+      const processedPromises = [];
 
-      addHeatedData(heatInput[i], i, meatId, currentUserId, isMethodPost)
-        .then((response) => {
-          if (response.ok)
-            console.log(
-              `가열육 ${isMethodPost ? '생성 POST' : '수정 PATCH'} 요청 성공`,
-              response.msg
-            );
-        })
-        .catch((error) => {
-          console.error(
-            `가열육 ${isMethodPost ? '생성 POST' : '수정 PATCH'} 요청 오류`,
-            error
-          );
-        });
+      // 1. 가열육 관능검사 데이터 생성/수정 API POST/PATCH
+      let dict = {};
+      for (let i = 0; i < len; i++) {
+        const isMethodPost = await isPost(
+          [
+            heated_data[i]?.flavor,
+            heated_data[i]?.juiciness,
+            heated_data[i]?.palatability,
+            heated_data[i]?.umami,
+            heated_data[i]?.tenderness0,
+            heated_data[i]?.tenderness3,
+            heated_data[i]?.tenderness7,
+            heated_data[i]?.tenderness14,
+            heated_data[i]?.tenderness21,
+          ],
+          [
+            heatInput[i]?.flavor,
+            heatInput[i]?.juiciness,
+            heatInput[i]?.palatability,
+            heatInput[i]?.umami,
+            heatInput[i]?.tenderness0,
+            heatInput[i]?.tenderness3,
+            heatInput[i]?.tenderness7,
+            heatInput[i]?.tenderness14,
+            heatInput[i]?.tenderness21,
+          ],
+          isHeatedPosted[i]
+        );
+        if (isMethodPost === undefined) continue;
+        else if (isMethodPost) dict = { ...dict, [i]: isMethodPost };
+
+        heatedPromises.push(
+          addHeatedData(heatInput[i], i, meatId, currentUserId, isMethodPost)
+            .then((response) => {
+              if (response.ok) {
+                console.log(
+                  `가열육 ${i + 1}회차 ${isMethodPost ? '생성 POST' : '수정 PATCH'} 요청 성공`,
+                  response.msg
+                );
+                return response;
+              } else {
+                throw new Error(
+                  `가열육 ${i + 1}회차 요청 실패: ${response.msg}`
+                );
+              }
+            })
+            .catch((error) => {
+              console.error(`가열육 ${i + 1}회차 요청 오류:`, error);
+              throw error;
+            })
+        );
+      }
+      setIsHeatedPosted({ ...isHeatedPosted, ...dict });
+
+      // 2. 실험실 데이터 생성/수정 API POST/PATCH
+      dict = {};
+      for (let i = 0; i < len; i++) {
+        const isMethodPost = await isPost(
+          [
+            lab_data[i]?.L,
+            lab_data[i]?.a,
+            lab_data[i]?.b,
+            lab_data[i]?.DL,
+            lab_data[i]?.CL,
+            lab_data[i]?.RW,
+            lab_data[i]?.ph,
+            lab_data[i]?.WBSF,
+            lab_data[i]?.cardepsin_activity,
+            lab_data[i]?.MFI,
+            lab_data[i]?.Collagen,
+            lab_data[i]?.sourness,
+            lab_data[i]?.bitterness,
+            lab_data[i]?.umami,
+            lab_data[i]?.richness,
+          ],
+          [
+            labInput[i]?.L,
+            labInput[i]?.a,
+            labInput[i]?.b,
+            labInput[i]?.DL,
+            labInput[i]?.CL,
+            labInput[i]?.RW,
+            labInput[i]?.ph,
+            labInput[i]?.WBSF,
+            labInput[i]?.cardepsin_activity,
+            labInput[i]?.MFI,
+            labInput[i]?.Collagen,
+            labInput[i]?.sourness,
+            labInput[i]?.bitterness,
+            labInput[i]?.umami,
+            labInput[i]?.richness,
+          ],
+          isLabPosted[i]
+        );
+        if (isMethodPost === undefined) continue;
+        else if (isMethodPost) dict = { ...dict, [i]: isMethodPost };
+        labPromises.push(
+          addProbexptData(labInput[i], i, meatId, currentUserId, isMethodPost)
+            .then((response) => {
+              if (response.ok) {
+                console.log(
+                  `실험실 ${i + 1}회차 ${isMethodPost ? '생성 POST' : '수정 PATCH'} 요청 성공`,
+                  response.msg
+                );
+                return response;
+              } else {
+                throw new Error(
+                  `실험실 ${i + 1}회차 요청 실패: ${response.msg}`
+                );
+              }
+            })
+            .catch((error) => {
+              console.error(`실험실 ${i + 1}회차 요청 오류:`, error);
+              throw error;
+            })
+        );
+      }
+      setIsLabPosted({ ...isLabPosted, ...dict });
+
+      // 3. 처리육 관능검사 데이터 생성/수정 API POST/PATCH
+      dict = {};
+      const pro_len = len === 1 ? len : len - 1;
+      const existSeq = processed_data_seq
+        .filter((item) => item.includes('회')) // '회'가 포함된 항목만 필터링
+        .map((item) => parseInt(item.replace('회', '')));
+      for (let i = 0; i < pro_len; i++) {
+        const isMethodPost = await isPost(
+          [
+            processed_data[i]?.marbling,
+            processed_data[i]?.color,
+            processed_data[i]?.texture,
+            processed_data[i]?.surfaceMoisture,
+            processed_data[i]?.overall,
+            processed_data[i]?.imagePath,
+          ],
+          [
+            processedInput[i]?.marbling,
+            processedInput[i]?.color,
+            processedInput[i]?.texture,
+            processedInput[i]?.surfaceMoisture,
+            processedInput[i]?.overall,
+            processed_data[i]?.imagePath,
+          ],
+          isProcessedPosted[i + 1]
+        );
+        // console.log(i, isMethodPost);
+        if (isMethodPost === undefined) continue;
+        else if (isMethodPost) dict = { ...dict, [i + 1]: isMethodPost };
+
+        processedPromises.push(
+          addSensoryProcessedData(
+            processedInput[i],
+            existSeq[i],
+            meatId,
+            currentUserId,
+            isMethodPost,
+            false
+          )
+            .then((response) => {
+              if (response.ok) {
+                console.log(
+                  `처리육 ${i + 1}회차 ${isMethodPost ? '생성 POST' : '수정 PATCH'} 요청 성공`,
+                  response.msg
+                );
+                return response;
+              } else {
+                throw new Error(
+                  `처리육 ${i + 1}회차 요청 실패: ${response.msg}`
+                );
+              }
+            })
+            .catch((error) => {
+              console.error(`처리육 ${i + 1}회차 요청 오류:`, error);
+              throw error;
+            })
+        );
+      }
+      setIsProcessedPosted({ ...isProcessedPosted, ...dict });
+
+      // 데이터 업데이트가 완료될 때까지 기다림
+      await Promise.all([
+        ...heatedPromises,
+        ...labPromises,
+        ...processedPromises,
+      ]);
+
+      console.log('모든 데이터 업데이트가 완료되었습니다.');
+      // 데이터 업데이트가 완료되면 페이지 새로고침
+      window.location.reload();
+    } catch (error) {
+      console.error('데이터 제출 중 오류가 발생했습니다:', error);
     }
-    setIsHeatedPosted({ ...isHeatedPosted, ...dict });
-
-    // 2. 실험실 데이터 생성/수정 API POST/PATCH
-    dict = {};
-    for (let i = 0; i < len; i++) {
-      const isMethodPost = await isPost(
-        [
-          lab_data[i]?.L,
-          lab_data[i]?.a,
-          lab_data[i]?.b,
-          lab_data[i]?.DL,
-          lab_data[i]?.CL,
-          lab_data[i]?.RW,
-          lab_data[i]?.ph,
-          lab_data[i]?.WBSF,
-          lab_data[i]?.cardepsin_activity,
-          lab_data[i]?.MFI,
-          lab_data[i]?.Collagen,
-          lab_data[i]?.sourness,
-          lab_data[i]?.bitterness,
-          lab_data[i]?.umami,
-          lab_data[i]?.richness,
-        ],
-        [
-          labInput[i]?.L,
-          labInput[i]?.a,
-          labInput[i]?.b,
-          labInput[i]?.DL,
-          labInput[i]?.CL,
-          labInput[i]?.RW,
-          labInput[i]?.ph,
-          labInput[i]?.WBSF,
-          labInput[i]?.cardepsin_activity,
-          labInput[i]?.MFI,
-          labInput[i]?.Collagen,
-          labInput[i]?.sourness,
-          labInput[i]?.bitterness,
-          labInput[i]?.umami,
-          labInput[i]?.richness,
-        ],
-        isLabPosted[i]
-      );
-      if (isMethodPost === undefined) continue;
-      else if (isMethodPost) dict = { ...dict, [i]: isMethodPost };
-      addProbexptData(labInput[i], i, meatId, currentUserId, isMethodPost)
-        .then((response) => {
-          if (response.ok)
-            console.log(
-              `실험실 ${isMethodPost ? '생성 POST' : '수정 PATCH'} 요청 성공`,
-              response.msg
-            );
-        })
-        .catch((error) => {
-          console.error(
-            `실험실 ${isMethodPost ? '생성 POST' : '수정 PATCH'} 요청 오류`,
-            error
-          );
-        });
-    }
-    setIsLabPosted({ ...isLabPosted, ...dict });
-
-    // 3. 처리육 관능검사 데이터 생성/수정 API POST/PATCH
-    dict = {};
-    const pro_len = len === 1 ? len : len - 1;
-    const existSeq = processed_data_seq
-      .filter((item) => item.includes('회')) // '회'가 포함된 항목만 필터링
-      .map((item) => parseInt(item.replace('회', '')));
-    for (let i = 0; i < pro_len; i++) {
-      const isMethodPost = await isPost(
-        [
-          processed_data[i]?.marbling,
-          processed_data[i]?.color,
-          processed_data[i]?.texture,
-          processed_data[i]?.surfaceMoisture,
-          processed_data[i]?.overall,
-          processed_data[i]?.imagePath,
-        ],
-        [
-          processedInput[i]?.marbling,
-          processedInput[i]?.color,
-          processedInput[i]?.texture,
-          processedInput[i]?.surfaceMoisture,
-          processedInput[i]?.overall,
-          processed_data[i]?.imagePath,
-        ],
-        isProcessedPosted[i + 1]
-      );
-      console.log(i, isMethodPost);
-      if (isMethodPost === undefined) continue;
-      else if (isMethodPost) dict = { ...dict, [i + 1]: isMethodPost };
-
-      addSensoryProcessedData(
-        processedInput[i],
-        existSeq[i],
-        meatId,
-        currentUserId,
-        isMethodPost,
-        false
-      )
-        .then((response) => {
-          if (response.ok)
-            console.log(
-              `처리육 ${isMethodPost ? '생성 POST' : '수정 PATCH'} 요청 성공`,
-              response.msg
-            );
-        })
-        .catch((error) => {
-          console.error(
-            `처리육 ${isMethodPost ? '생성 POST' : '수정 PATCH'} 요청 오류`,
-            error
-          );
-        });
-      isMethodPostPro = isMethodPost;
-    }
-    setIsProcessedPosted({ ...isProcessedPosted, ...dict });
-    window.location.reload();
   };
 
   // 처리육 이미지 먼저 업로드 경고 창 필요 여부
