@@ -12,6 +12,7 @@ const AgingInfoRegister = ({
   processed_data_seq,
   meatId,
   userId,
+  butcheryYmd,
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [validated, setValidated] = useState(false);
@@ -19,6 +20,24 @@ const AgingInfoRegister = ({
   const [time, setTime] = useState('');
   const [showCompletionModal, setShowCompletionModal] = useState(false);
   const [seqno, setSeqno] = useState('');
+
+  // 도축일자 형식 변환 (YYYYMMDD -> YYYY-MM-DD)
+  const formatButcheryDate = (butcheryYmd) => {
+    if (!butcheryYmd || typeof butcheryYmd !== 'string') {
+      console.error('Invalid butcheryYmd format. Expected format: YYYYMMDD');
+      return '';
+    }
+
+    try {
+      const year = butcheryYmd.substring(0, 4);
+      const month = butcheryYmd.substring(4, 6);
+      const day = butcheryYmd.substring(6, 8);
+      return `${year}-${month}-${day}`;
+    } catch (error) {
+      console.error('Error formatting butcheryYmd:', error);
+      return '';
+    }
+  };
 
   const handleCompletionModalClose = () => {
     setShowCompletionModal(false);
@@ -98,6 +117,7 @@ const AgingInfoRegister = ({
               required
               type="Date"
               id="DateInput"
+              min={formatButcheryDate(butcheryYmd)}
               placeholder="날짜를 입력하세요"
               onChange={(event) => {
                 setDate(event.target.value);
@@ -105,15 +125,27 @@ const AgingInfoRegister = ({
             />
           </InputGroup>
           <Form.Group className="mb-3">
-            <Form.Label column>시간(분)</Form.Label>
+            <Form.Label>시간(분)</Form.Label>
             <Form.Control
               required
               type="number"
+              min="0"
               placeholder="딥에이징 시간(분)"
+              value={time}
               onChange={(event) => {
-                setTime(event.target.value);
+                let value = event.target.value;
+
+                if (value.includes('-')) {
+                  value = value.replace('-', '');
+                }
+
+                const validValue = Math.max(0, Number(value));
+                setTime(validValue.toString());
               }}
             />
+            <Form.Control.Feedback type="invalid">
+              0 이상의 숫자를 입력해주세요.
+            </Form.Control.Feedback>
           </Form.Group>
           <Form.Label column>회차</Form.Label>
           <InputGroup className="mb-3" hasValidation>

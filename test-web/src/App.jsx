@@ -26,7 +26,7 @@ function App() {
   const routes = [
     {
       path: '/',
-      title: 'LogIn | DeePlant',
+      title: isLoggedin ? 'Home | DeePlant' : 'LogIn | DeePlant',
       component: isLoggedin ? <Home /> : <LogIn />,
     },
     {
