@@ -1,7 +1,7 @@
 // Importing the useSWR hook from the "swr" library
 import useSWR from 'swr';
 import { apiIP } from '../../../../config';
-import fetcher from '../../../../Utils/api/fetcher';
+import fetcher from '../../../../shared/api/fetcher';
 
 export const useOpencvImageData = (meatId, seqno) => {
   //id에 대항하는 육류 상세 데이터를 AmI 서버로 부터 fetch

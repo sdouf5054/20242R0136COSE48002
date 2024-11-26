@@ -1,7 +1,7 @@
 import { computePeriod } from '../computeTime';
 import addSensoryRawImg from '../api/add/addSensoryRawImg';
 import addSensoryProcessedData from '../api/add/addSensoryProcessedData';
-import uploadNewImgToFirebase from '../api/firebase/uploadNewImgToFirebase';
+import uploadNewImgToFirebase from '../api/uploadNewImgToFirebase';
 import predictOpencvImageData from '../api/predict/predictOpencvImageData';
 import { TIME_ZONE } from '../../../config';
 

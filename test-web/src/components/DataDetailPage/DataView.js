@@ -6,7 +6,7 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Button from 'react-bootstrap/Button';
 // userContext
-import { useUser } from '../../Utils/UserContext';
+import { useUser } from '../../shared/Utils/UserContext';
 // modal component
 import InputTransitionsModal from './InputTransitionsModal';
 // mui
@@ -29,7 +29,7 @@ import RestrictedModal from './RestrictedModal';
 import QRInfoCard from './CardComps/QRInfoCard';
 import MeatImgsCard from './CardComps/MeatImgsCard';
 import { computePeriod } from './computeTime';
-import isPost from '../../API/isPost';
+import isPost from './api/isPost';
 import { Modal } from 'react-bootstrap';
 import AgingInfoRegister from './AgingInfoRegister';
 import AgingInfoDeleter from './AgingInfoDelete';

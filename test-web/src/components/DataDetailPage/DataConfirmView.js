@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 // userContext
-import { useUser } from '../../Utils/UserContext';
+import { useUser } from '../../shared/Utils/UserContext';
 // modal component
 import InputTransitionsModal from './InputTransitionsModal';
 // mui

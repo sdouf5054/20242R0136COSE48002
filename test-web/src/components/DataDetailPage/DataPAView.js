@@ -6,7 +6,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import QRInfoCard from './CardComps/QRInfoCard';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import CustomSnackbar from '../../Utils/CustomSnackbar';
+import CustomSnackbar from '../../shared/components/CustomSnackbar';
 
 //mui
 import './imgRot.css';
@@ -19,7 +19,7 @@ import PredictedProcessedTablePA from './TablesComps/PredictedProcessedTablePA';
 
 import { computePeriod } from './computeTime';
 import { apiIP } from '../../config';
-import { useUser } from '../../Utils/UserContext';
+import { useUser } from '../../shared/Utils/UserContext';
 
 import { predictSensoryData } from './api/predict/predictSensoryData';
 import { predictOpencvTrainingData } from './api/predict/predictOpencvTrainingData';

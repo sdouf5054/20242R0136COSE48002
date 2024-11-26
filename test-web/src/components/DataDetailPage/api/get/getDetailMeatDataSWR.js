@@ -1,7 +1,7 @@
 // Importing the useSWR hook from the "swr" library
 import useSWR from 'swr';
 import { apiIP } from '../../../../config';
-import fetcher from '../../../../Utils/api/fetcher';
+import fetcher from '../../../../shared/api/fetcher';
 
 //custom Hook인 getDetailMeatDataSWR를 export
 export const useDetailMeatData = (meatId) => {

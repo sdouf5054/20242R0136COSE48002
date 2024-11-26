@@ -3,7 +3,7 @@ import { Box, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import DataList from './DataList';
 import Spinner from 'react-bootstrap/Spinner';
 import Pagination from './Children/Pagination';
-import { useRejectedMeatList } from './api/getRejectedMeatListSWR';
+import { useRejectedMeatList } from './api/get/getRejectedMeatListSWR';
 import style from './style/rejecteddatalistcompstyle';
 
 // 반려 데이터 목록 컴포넌트

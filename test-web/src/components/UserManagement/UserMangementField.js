@@ -13,7 +13,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import SearchIcon from '@mui/icons-material/Search';
 import { IoMdPersonAdd } from 'react-icons/io';
 
-import CustomSnackbar from '../../Utils/CustomSnackbar';
+import CustomSnackbar from '../../shared/components/CustomSnackbar';
 
 import DeleteConfirmationModal from './Childeren/DeleteConfirmationModal';
 import UserRegisterModal from './Childeren/UserRegisterModal';
@@ -21,7 +21,7 @@ import UserRegisterModal from './Childeren/UserRegisterModal';
 import handleUserDelete from './Childeren/handleUserDelete';
 import handleUserSearch from './Childeren/handleUserSearch';
 
-import { useUser } from '../../Utils/UserContext';
+import { useUser } from '../../shared/Utils/UserContext';
 import { userList } from './api/userList';
 import UserTable from './Childeren/UserTable';
 

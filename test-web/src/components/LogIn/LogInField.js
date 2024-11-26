@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 // import { auth } from '../../firebase-config';
-import { useUser, useSetUser } from '../../Utils/UserContext';
+import { useUser, useSetUser } from '../../shared/Utils/UserContext';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';

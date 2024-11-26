@@ -6,7 +6,7 @@ import { FaArrowLeft, FaArrowRight, FaUpload } from 'react-icons/fa';
 // mui
 import { IconButton } from '@mui/material';
 // UserContext
-import { useUser } from '../../../Utils/UserContext';
+import { useUser } from '../../../shared/Utils/UserContext';
 
 import handleImgChange from './handleImgChange';
 import style from '../style/meatimgscardstyle';
