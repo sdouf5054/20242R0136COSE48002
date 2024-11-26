@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import ApexCharts from 'react-apexcharts';
-import { statisticSensoryFresh } from '../../../../API/statistic/statisticSensoryFresh';
-import { statisticSensoryProcessed } from '../../../../API/statistic/statisticSensoryProcessed';
-import { statisticSensoryHeated } from '../../../../API/statistic/statisticSensoryHeated';
-import { statisticProbexptFresh } from '../../../../API/statistic/statisticProbexptFresh';
-import { statisticProbexptProcessed } from '../../../../API/statistic/statisticProbexptProcessed';
+import { statisticSensoryFresh } from '../../api/statisticSensoryFresh';
+import { statisticSensoryProcessed } from '../../api/statisticSensoryProcessed';
+import { statisticSensoryHeated } from '../../api/statisticSensoryHeated';
+import { statisticProbexptFresh } from '../../api/statisticProbexptFresh';
+import { statisticProbexptProcessed } from '../../api/statisticProbexptProcessed';
 import calculateHeatMapChartSeries from './calculateHeatMapChartSeries';
 import getHeatMapChartOption from './getHeatMapChartOption';
 import axisLabels from '../constants/axisLabels';

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 import CustomSnackbar from '../Utils/CustomSnackbar';
-import { userDelete } from '../API/user/userDelete';
+import { userDelete } from '../Utils/api/userDelete';
 import ProfileEditForm from '../components/Profile/ProfileEditForm';
 import PasswordCheckModal from '../components/Profile/PasswordCheckModal';
 import SelfDeleteConfirmationModal from '../components/Profile/SelfDeleteConfirmationModal';

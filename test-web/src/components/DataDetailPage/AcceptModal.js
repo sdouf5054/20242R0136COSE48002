@@ -3,9 +3,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Backdrop, Box, Modal, Fade, Button, Typography } from '@mui/material';
 import { FaRegCheckCircle } from 'react-icons/fa';
 import StateChangedModal from './StateChangedModal';
-import updateDataStatus from '../../API/updateDataStatus';
+import updateDataStatus from './api/updateDataStatus';
 import style from './style/acceptmodalstyle';
-
 
 const navy = '#0F3659';
 
@@ -138,4 +137,3 @@ export const AcceptModal = ({ meatId, setConfirmVal, confirmVal }) => {
   );
 };
 export default AcceptModal;
-

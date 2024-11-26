@@ -22,7 +22,7 @@ import handleUserDelete from './Childeren/handleUserDelete';
 import handleUserSearch from './Childeren/handleUserSearch';
 
 import { useUser } from '../../Utils/UserContext';
-import { userList } from '../../API/user/userList';
+import { userList } from './api/userList';
 import UserTable from './Childeren/UserTable';
 
 const UserList = () => {

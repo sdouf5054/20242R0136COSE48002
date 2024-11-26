@@ -18,7 +18,7 @@ import { TIME_ZONE } from '../../config';
 import Spinner from 'react-bootstrap/Spinner';
 // import update APIs
 
-import addSensoryRawData from '../../API/add/addSensoryRawData';
+import addSensoryRawData from './api/add/addSensoryRawData';
 import RestrictedModal from './RestrictedModal';
 // import card
 import QRInfoCard from './CardComps/QRInfoCard';

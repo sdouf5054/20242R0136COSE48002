@@ -21,9 +21,9 @@ import ApiTable from './TablesComps/ApiTable';
 import { TIME_ZONE } from '../../config';
 import Spinner from 'react-bootstrap/Spinner';
 // import update APIs
-import addHeatedData from '../../API/add/addHeatedData';
-import addProbexptData from '../../API/add/addProbexptData';
-import addSensoryProcessedData from '../../API/add/addSensoryProcessedData';
+import addHeatedData from './api/add/addHeatedData';
+import addProbexptData from './api/add/addProbexptData';
+import addSensoryProcessedData from './api/add/addSensoryProcessedData';
 import RestrictedModal from './RestrictedModal';
 // import card
 import QRInfoCard from './CardComps/QRInfoCard';

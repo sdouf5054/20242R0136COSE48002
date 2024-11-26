@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import { Button, Spinner, Modal } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
-import { userDuplicateCheck } from '../../../API/user/userDuplicateCheck';
+import { userDuplicateCheck } from '../api/userDuplicateCheck';
 import handleUserRegisterSubmit from './UserRegisterModalChildren/handleUserRegisterSubmit';
 import RegisterCompletionModal from './UserRegisterModalChildren/RegisterCompletionModal';
 

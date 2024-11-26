@@ -11,7 +11,7 @@ import { useUser } from '../../../Utils/UserContext';
 import handleImgChange from './handleImgChange';
 import style from '../style/meatimgscardstyle';
 import { Tooltip } from '@mui/material';
-import useOpencvImageData from '../../../API/get/getOpencvImageDataSWR';
+import useOpencvImageData from '../api/get/getOpencvImageDataSWR';
 import OpencvImgMaker from './OpencvImgMaker';
 
 const navy = '#0F3659';

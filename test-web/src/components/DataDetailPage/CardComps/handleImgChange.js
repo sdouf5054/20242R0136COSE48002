@@ -1,8 +1,8 @@
 import { computePeriod } from '../computeTime';
-import addSensoryRawImg from '../../../API/add/addSensoryRawImg';
-import addSensoryProcessedData from '../../../API/add/addSensoryProcessedData';
-import uploadNewImgToFirebase from '../../../API/firebase/uploadNewImgToFirebase';
-import predictOpencvImageData from '../../../API/predict/predictOpencvImageData';
+import addSensoryRawImg from '../api/add/addSensoryRawImg';
+import addSensoryProcessedData from '../api/add/addSensoryProcessedData';
+import uploadNewImgToFirebase from '../api/firebase/uploadNewImgToFirebase';
+import predictOpencvImageData from '../api/predict/predictOpencvImageData';
 import { TIME_ZONE } from '../../../config';
 
 const handleImgChange = async ({

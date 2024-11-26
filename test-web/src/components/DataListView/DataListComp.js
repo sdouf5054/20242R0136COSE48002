@@ -3,7 +3,7 @@ import { Box, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import Spinner from 'react-bootstrap/Spinner';
 import DataList from './DataList';
 import Pagination from './Children/Pagination';
-import { useMeatList } from '../../API/get/getMeatListSWR';
+import { useMeatList } from './api/getMeatListSWR';
 import style from './style/datalistcompstyle';
 
 // 데이터 목록 조회 페이지 컴포넌트

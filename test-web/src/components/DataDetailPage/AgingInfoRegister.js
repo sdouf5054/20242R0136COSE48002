@@ -3,9 +3,9 @@ import Spinner from 'react-bootstrap/Spinner';
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
-import addDeepAgingRegister from '../../API/add/addDeepAging';
+import addDeepAgingRegister from './api/add/addDeepAging';
 import DeepInfoCompleteModal from './DeepInfoCompleteModal';
-import addSensoryProcessedData from '../../API/add/addSensoryProcessedData';
+import addSensoryProcessedData from './api/add/addSensoryProcessedData';
 
 const AgingInfoRegister = ({
   handleClose,

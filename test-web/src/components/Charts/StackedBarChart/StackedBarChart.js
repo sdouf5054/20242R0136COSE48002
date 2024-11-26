@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 // third-party
 import ReactApexChart from 'react-apexcharts';
-import { useStatisticStackedBar } from '../../../API/statistic/statsticStackedBarSWR';
+import { useStatisticStackedBar } from '../api/statsticStackedBarSWR';
 import processStackedBarData from './helper/processStackedBarData';
 
 const StackedBarChart = ({ startDate, endDate }) => {

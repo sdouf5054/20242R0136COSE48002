@@ -1,6 +1,6 @@
 import ApexCharts from 'react-apexcharts';
 import React, { useEffect, useState } from 'react';
-import { statisticTime } from '../../../../API/statistic/statisticTime';
+import { statisticTime } from '../../api/statisticTime';
 
 const TasteTime = ({ startDate, endDate, seqnoValue, meatValue }) => {
   const [series, setSeries] = useState([

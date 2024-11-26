@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { useStatisticChoroplethMap } from '../../../API/statistic/statsticChoroplethMapSWR';
+import { useStatisticChoroplethMap } from '../api/statsticChoroplethMapSWR';
 import { processMapData } from './helper/processMapData'; // processMapData 함수를 import
 import getColor from './helper/getColor';
 import onEachFeature from './helper/onEachFeature';

@@ -21,9 +21,9 @@ import { computePeriod } from './computeTime';
 import { apiIP } from '../../config';
 import { useUser } from '../../Utils/UserContext';
 
-import { predictSensoryData } from '../../API/predict/predictSensoryData';
-import { predictOpencvTrainingData } from '../../API/predict/predictOpencvTrainingData';
-// import { getPredictedData } from '../../API/get/getPredictedData';
+import { predictSensoryData } from './api/predict/predictSensoryData';
+import { predictOpencvTrainingData } from './api/predict/predictOpencvTrainingData';
+// import { getPredictedData } from './api/get/getPredictedData';
 
 const DataPAView = ({ dataProps }) => {
   //데이터 받아오기

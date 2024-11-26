@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import DeepInfoCompleteModal from './DeepInfoCompleteModal';
-import deleteDeepAging from '../../API/delete/deleteDeepAging';
+import deleteDeepAging from './api/delete/deleteDeepAging';
 
 const AgingInfoDeleter = ({ handleClose, meatId, processed_data_seq }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -54,7 +54,10 @@ const AgingInfoDeleter = ({ handleClose, meatId, processed_data_seq }) => {
               required
               id="SelectSeqno"
               onChange={(event) => {
-                const selectedSeq = filteredSeqs[event.target.value].replace('회', '');
+                const selectedSeq = filteredSeqs[event.target.value].replace(
+                  '회',
+                  ''
+                );
                 setSeqno(selectedSeq);
               }}
               //value={seqno}
@@ -107,7 +110,7 @@ const AgingInfoDeleter = ({ handleClose, meatId, processed_data_seq }) => {
         onHide={handleCompletionModalClose}
         meatId={meatId}
         seqno={seqno}
-        type = "delete"
+        type="delete"
       />
     </div>
   );

@@ -9,7 +9,7 @@ import { fNumber } from './formatNumber';
 import useChart from './helper/usePieChart';
 import { useEffect, useState } from 'react';
 
-import { useStatisticPieChart } from '../../../API/statistic/statsticPieChartSWR';
+import { useStatisticPieChart } from '../api/statsticPieChartSWR';
 import processPieData from './helper/processPieData';
 
 import handleBtnClick from './helper/handleBtnClick';

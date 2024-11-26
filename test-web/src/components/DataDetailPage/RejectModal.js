@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Backdrop, Box, Modal, Fade, Button, Typography } from '@mui/material';
 import { FaRegTimesCircle } from 'react-icons/fa';
 import StateChangedModal from './StateChangedModal';
-import updateDataStatus from '../../API/updateDataStatus';
+import updateDataStatus from './api/updateDataStatus';
 
 const navy = '#0F3659';
 
@@ -149,4 +149,3 @@ const style = {
   p: 4,
   borderRadius: '10px',
 };
-

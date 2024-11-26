@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Backdrop, Box, Modal, Fade, Button, Typography } from '@mui/material';
 import { FaRegTrashAlt } from 'react-icons/fa';
-import { deleteMeat } from '../../../API/delete/deleteMeat';
+import { deleteMeat } from '../api/deleteMeat';
 import style from '../style/delwarningmodalstyle';
 const navy = '#0F3659';
 
@@ -145,4 +145,3 @@ const DelWarningModal = ({
 };
 
 export default DelWarningModal;
-
