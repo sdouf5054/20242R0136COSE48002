@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useUser } from '../Utils/UserContext';
 
 import UserList from '../components/UserManagement/UserMangementField';
-import CustomSnackbar from '../components/Base/CustomSnackbar';
+import CustomSnackbar from '../Utils/CustomSnackbar';
 // import MuiAlert from '@mui/material/Alert';
 
 // const Alert = React.forwardRef((props, ref) => {

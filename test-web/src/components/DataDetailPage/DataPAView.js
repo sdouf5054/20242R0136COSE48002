@@ -6,7 +6,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import QRInfoCard from './CardComps/QRInfoCard';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import CustomSnackbar from '../Base/CustomSnackbar';
+import CustomSnackbar from '../../Utils/CustomSnackbar';
 
 //mui
 import './imgRot.css';

@@ -40,4 +40,4 @@ export const addSensoryRawData = async (rawInput, i, meatId) => {
     console.error(err);
   }
 };
-export default addSensoryRawData
+export default addSensoryRawData;

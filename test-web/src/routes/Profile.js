@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
-import CustomSnackbar from '../components/Base/CustomSnackbar';
+import CustomSnackbar from '../Utils/CustomSnackbar';
 import { userDelete } from '../API/user/userDelete';
 import ProfileEditForm from '../components/Profile/ProfileEditForm';
 import PasswordCheckModal from '../components/Profile/PasswordCheckModal';

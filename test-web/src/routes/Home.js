@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 import Container from '@mui/material/Container';
-import CustomSnackbar from '../components/Base/CustomSnackbar';
+import CustomSnackbar from '../Utils/CustomSnackbar';
 import MuiAlert from '@mui/material/Alert';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../Utils/UserContext';

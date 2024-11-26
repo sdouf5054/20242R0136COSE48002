@@ -9,7 +9,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AppBar from './Children/AppBar';
 import Drawer from './Children/Drawer';
 
-import CustomSnackbar from '../../Base/CustomSnackbar';
+import CustomSnackbar from '../../../Utils/CustomSnackbar';
 import useLogout from '../../../Utils/useLogout';
 import { useUser } from '../../../Utils/UserContext';
 
