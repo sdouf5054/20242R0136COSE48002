@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import DataView from './DataView';
-import DataPAView from './DataPAView';
-import DataConfirmView from './DataConfirmView';
-import dataProcessing from './dataProcessing';
+import DataView from './DetailDataController/DataView';
+import DataPAView from './DetailDataController/DataPAView';
+import DataConfirmView from './DetailDataController/DataConfirmView';
+import dataProcessing from './DetailDataController/dataProcessing';
 import Spinner from 'react-bootstrap/Spinner';
 import { useDetailMeatData } from './api/get/getDetailMeatDataSWR';
 

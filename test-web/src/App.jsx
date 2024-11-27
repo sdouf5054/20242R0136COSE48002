@@ -15,7 +15,7 @@ import DataPredict from './components/DataDetailPage/routes/DataPredict';
 import { UserProvider } from './shared/Utils/UserContext';
 
 import Box from '@mui/material/Box';
-import MainWidgetBars from './components/Widget/MainWidgetBars';
+import WidgetBars from './components/Widget/WidgetBars';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 const defaultTheme = createTheme();
 
@@ -94,7 +94,7 @@ function App() {
                       <LogIn />
                     ) : (
                       <Box sx={{ display: 'flex' }}>
-                        <MainWidgetBars />
+                        <WidgetBars />
                         <Box
                           component="main"
                           sx={{

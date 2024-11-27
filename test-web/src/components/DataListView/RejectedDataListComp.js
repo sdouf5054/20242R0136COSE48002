@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Box, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
-import DataList from './DataList';
+import DataList from './ListComp/DataList';
 import Spinner from 'react-bootstrap/Spinner';
-import Pagination from './Children/Pagination';
+import Pagination from './ListComp/Pagination';
 import { useRejectedMeatList } from './api/get/getRejectedMeatListSWR';
 import style from './style/rejecteddatalistcompstyle';
 

@@ -12,7 +12,7 @@ import SearchFilterBar from '../../../shared/components/Search/SearchFilterBar';
 // 육류 목록 컴포넌트
 import DataListComp from '../DataListComp';
 // 목록 현황 컴포넌트
-import DataStat from '../Charts/DataStat';
+import Charts from '../Charts';
 // 반려 데이터 목록 컴포넌트
 import RejectedDataListComp from '../RejectedDataListComp';
 // 엑셀 파일 export/ import 컴포넌트
@@ -261,7 +261,7 @@ const Dashboard = () => {
         />
       )}
       {value === 'stat' && (
-        <DataStat
+        <Charts
           startDate={startDate}
           endDate={endDate}
           pageOffset={pageOffset}

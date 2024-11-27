@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../../shared/Utils/UserContext';
 
-import UserList from '../UserMangementField';
+import UserMangementField from '../UserMangementField';
 import CustomSnackbar from '../../../shared/components/CustomSnackbar';
 // import MuiAlert from '@mui/material/Alert';
 
@@ -42,7 +42,7 @@ const UserManagement = () => {
     );
   }
 
-  return <UserList />;
+  return <UserMangementField />;
 };
 
 export default UserManagement;
