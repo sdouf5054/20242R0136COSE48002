@@ -25,7 +25,7 @@ const LogInField = () => {
   // const [registerPassword, setRegisterPassword] = useState('');
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [loginError, setLoginError] = useState('');
   const [rememberMe, setRememberMe] = useState(false); // New state variable for "Remember Me" checkbox
 
@@ -70,6 +70,7 @@ const LogInField = () => {
       const response = await userIsLogin(loginEmail);
       const user = await response.json();
       // const user = userUser();
+      console.log('userIsLogin Response:', user);
 
       if (!user.type || user.type === 'Normal') {
         // 관리자가 아닌 경우

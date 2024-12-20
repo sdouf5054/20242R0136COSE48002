@@ -191,7 +191,7 @@ const UserMangementField = () => {
             marginBottom: `${(16 / 1080) * 100}vh`,
             paddingX: `8px`,
             paddingY: `8px`,
-            width: '280px',
+            width: '300px',
             height: '50px',
             // minHeight: '60px',
             backgroundColor: '#FFF',
